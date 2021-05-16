@@ -95,3 +95,15 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// trace syscall and interpret
+uint64
+sys_trace(void)
+{
+  int bittracecallnum;
+  
+  argint(0, &bittracecallnum);
+  myproc()->bittracecallnum = bittracecallnum;
+
+  return 0;
+}
